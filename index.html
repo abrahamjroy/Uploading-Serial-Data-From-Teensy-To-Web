@@ -1,0 +1,64 @@
+<html>
+	
+	<head>
+		<title> Arduino Serial to Browser </title> 
+		<!-- by Abraham J Roy,Arjun K.P,Arjun R.Nath and Alan Antony -->
+		<script src="http://code.jquery.com/jquery-latest.js"></script> 
+		<style type="text/css">
+			body{text-align:center;
+			background-color:#000000;
+			}
+		#vals{
+		font-family:Helvetica;
+		font-weight : 100;
+		font-size : 72px;
+		color:#32CD32;
+	}
+
+	#title{
+		font-family:Futura;
+		font-size:48px;
+		font-weight:900;
+	color:white;	
+	}
+	
+	#footer, #footer a{
+	font-family: Helvetica;
+	font-size: 20px;
+	color: gray;
+	}
+	
+	
+	
+	
+
+		</style>
+</head>
+
+	<body>
+	<div id='title'>
+ARDUINO SERIAL TO BROWSER
+
+	</div>
+		<div id='vals'> </div>
+		<script type = "text/javascript">
+			var allVals = [];
+			function getArduinoVals(){	
+				
+				$.getJSON('/arduino/', function(data){
+						
+			$('#vals').html(data.val);			
+						});
+			 	
+			//	$('<div>', {'id' : 'val', html : a.responseText}).appendTo('#vals');
+						
+				t = setTimeout("getArduinoVals()",500); //second argument is the milliseconds delay
+			}	
+	
+			getArduinoVals();
+
+		</script>
+
+<div id='footer'>by Abraham Jeevan Roy at <a href="FISAT">whichlight </a> </div>
+	</body>
+</html> 
